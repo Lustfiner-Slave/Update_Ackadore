@@ -44,8 +44,9 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 760,
-    minWidth: 800,
-    minHeight: 640,
+    minWidth: 560,
+    minHeight: 480,
+    autoHideMenuBar: true,
     backgroundColor: '#0b0f14',
     title: 'WWDIS — Солянка Minecraft',
     webPreferences: {

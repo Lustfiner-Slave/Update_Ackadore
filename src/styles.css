@@ -15,9 +15,10 @@
 
 body {
   margin: 0;
-  min-width: 760px;
+  min-width: 0;
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: auto;
   background:
     linear-gradient(90deg, transparent 49.8%, #ffffff05 50%, transparent 50.2%),
     radial-gradient(circle at 82% 12%, #672d3222 0, transparent 30%),
@@ -28,7 +29,7 @@ button, input, select { font: inherit; }
 button { cursor: pointer; }
 
 .app {
-  width: min(940px, calc(100% - 56px));
+  width: min(940px, calc(100% - 32px));
   margin: 0 auto;
   padding-bottom: 10px;
 }
@@ -124,9 +125,9 @@ footer {
 }
 
 .dashboard {
-  height: 202px;
+  min-height: 202px;
   display: grid;
-  grid-template-columns: 1fr 158px;
+  grid-template-columns: minmax(0, 1fr) 158px;
   gap: 10px;
   padding: 12px 0 8px;
   border-bottom: 1px solid var(--line);
@@ -437,8 +438,8 @@ h1 i { color: #bd625e; font-weight: 400; }
 
 .content-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr .78fr;
-  grid-template-rows: 180px 68px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, .78fr);
+  grid-template-rows: minmax(180px, auto) auto;
   gap: 8px;
   padding: 10px 0 8px;
 }
@@ -609,7 +610,7 @@ select option { background: #171214; color: #e8dfd2; }
   grid-row: 1;
   margin: 0;
   width: 100%;
-  height: 180px;
+  min-height: 180px;
 }
 
 .settings-fields {
@@ -642,6 +643,7 @@ select option { background: #171214; color: #e8dfd2; }
 .launch-area {
   grid-column: 1 / -1;
   grid-row: 2;
+  min-height: 68px;
   display: grid;
   grid-template-columns: 180px 270px 1fr;
   align-items: center;
@@ -714,11 +716,14 @@ select option { background: #171214; color: #e8dfd2; }
   animation: progress-simmer 1.3s ease-in-out infinite alternate;
 }
 .progress-value {
-  min-width: 300px;
+  min-width: 0;
+  max-width: 70%;
   color: #c7a77b;
   font: 8px Consolas, monospace;
   text-align: right;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @keyframes progress-simmer {
   from { transform: translateX(-8%); }
@@ -755,8 +760,94 @@ footer {
 footer span:first-child { color: #b19575; letter-spacing: 2px; }
 
 @media (max-width: 850px) {
-  .app { width: calc(100% - 32px); }
   .quick-nav { display: none; }
-  .dashboard { grid-template-columns: 1fr 140px; }
-  .launch-area { grid-template-columns: 150px 240px 1fr; }
+  .dashboard { grid-template-columns: minmax(0, 1fr) 140px; }
+  .launch-area { grid-template-columns: minmax(120px, .7fr) minmax(190px, 1fr) minmax(0, 1.3fr); }
+}
+
+@media (max-width: 720px) {
+  .app { width: calc(100% - 24px); }
+  .topbar {
+    height: auto;
+    min-height: 60px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+  }
+  .dashboard {
+    grid-template-columns: minmax(0, 1fr) 120px;
+    gap: 8px;
+  }
+  .hero-copy {
+    width: 62%;
+    padding: 20px 0 16px 18px;
+  }
+  h1 { font-size: clamp(30px, 6vw, 38px); }
+  .ticker-tag { width: 100px; }
+  .ticker-route {
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 5px 8px;
+  }
+  .content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+  }
+  .settings-panel {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .launch-area {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    grid-template-columns: minmax(110px, .7fr) minmax(0, 1fr);
+  }
+  .status-row {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    min-width: 0;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+  .progress-value { max-width: 60%; }
+}
+
+@media (max-width: 560px) {
+  .app { width: calc(100% - 20px); }
+  .edition { display: none; }
+  .dashboard { grid-template-columns: minmax(0, 1fr); }
+  .hero { min-height: 190px; }
+  .hero-copy { width: 70%; }
+  .system-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
+  .mini-card { min-height: 88px; }
+  .ticker-tag { width: 82px; }
+  .ticker-route { font-size: 6px; }
+  .content-grid { grid-template-columns: minmax(0, 1fr); }
+  .settings-panel {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 0;
+  }
+  .launch-area { grid-template-columns: minmax(0, 1fr); }
+  .launch-meta { height: auto; min-height: 42px; }
+  .launch-button { width: 100%; }
+  .status-row { grid-column: 1; }
+  .progress-row {
+    grid-column: 1;
+    flex-wrap: wrap;
+  }
+  .progress-value {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: left;
+  }
+  footer {
+    height: auto;
+    min-height: 34px;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    padding: 8px 0;
+  }
+  footer span:last-child { margin-left: auto; }
 }
