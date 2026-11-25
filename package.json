@@ -1,0 +1,54 @@
+{
+  "name": "minecraft-server-launcher",
+  "version": "1.0.1",
+  "description": "WWDIS Minecraft NeoForge launcher for Windows",
+  "main": "src/main.js",
+  "author": "Local",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "electron-updater": "^6.8.11",
+    "extract-zip": "^2.0.1",
+    "minecraft-launcher-core": "^3.18.2",
+    "msmc": "^5.0.5"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.wwdis.launcher",
+    "productName": "WWDIS Launcher",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Lustfiner-Slave",
+        "repo": "Update_Ackadore",
+        "releaseType": "release"
+      }
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "allowScripts": {
+    "electron@33.4.11": true
+  }
+}

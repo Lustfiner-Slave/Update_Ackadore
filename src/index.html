@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WWDIS — Солянка Minecraft</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div class="sigil" aria-hidden="true"><span>W</span></div>
+        <div class="brand">
+          <strong>WWDIS</strong>
+          <span>КАСТРЮЛЯ ПЕПЛА И ЖЕЛЕЗА</span>
+        </div>
+        <nav class="quick-nav" aria-label="Разделы лаунчера">
+          <button class="quick-tab active" type="button">КАСТРЮЛЯ</button>
+          <button class="quick-tab" type="button">ГАРНИР</button>
+          <button class="quick-tab" type="button">СПЕЦИИ</button>
+        </nav>
+        <div class="edition"><span class="status-dot"></span> NEOFORGE 21.1.266</div>
+      </header>
+
+      <div class="dashboard">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span></span> КОЛЛЕКТИВНАЯ КАСТРУЛЯ · №47</div>
+            <h1>Солянка<br><i>по-серверному.</i></h1>
+            <p>Сборка с Drive обновляется при запуске — прыгай в горячую солянку.</p>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="steam steam-a"></div>
+            <div class="steam steam-b"></div>
+            <div class="steam steam-c"></div>
+            <div class="bowl">
+              <div class="broth">
+                <i class="ingredient olive olive-a"></i>
+                <i class="ingredient olive olive-b"></i>
+                <i class="ingredient olive olive-c"></i>
+                <i class="ingredient sausage sausage-a"></i>
+                <i class="ingredient sausage sausage-b"></i>
+                <i class="ingredient mushroom"></i>
+                <i class="ingredient lemon"></i>
+                <i class="ingredient herb herb-a"></i>
+                <i class="ingredient herb herb-b"></i>
+                <i class="ingredient pepper"></i>
+              </div>
+            </div>
+            <div class="bowl-shadow"></div>
+            <div class="hero-caption">СБОРКА ИЗ GOOGLE DRIVE <span>✦</span> ПОДАЁТСЯ ГОРЯЧЕЙ</div>
+          </div>
+          <div class="hero-stamp">
+            <span>SEASON</span>
+            <strong>01</strong>
+          </div>
+        </section>
+
+        <aside class="system-stack">
+          <section class="mini-card build-card">
+            <span class="corner-mark">A/01</span>
+            <span class="mini-label">АКТИВНЫЙ РЕЦЕПТ</span>
+            <strong>1.21.1</strong>
+            <small>NeoForge 21.1.266</small>
+          </section>
+          <section class="mini-card signal-card">
+            <span class="corner-mark">A/02</span>
+            <span class="mini-label">ГОТОВНОСТЬ КУХНИ</span>
+            <div class="signal-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <small>КАСТРЮЛЯ НА ОГНЕ</small>
+          </section>
+        </aside>
+      </div>
+
+      <section class="ticker" aria-label="Информация">
+        <div class="ticker-tag">ИНГРЕДИЕНТЫ</div>
+        <div class="ticker-route"><span>БУЛЬОН</span><b>1.21.1</b><i></i><span>СПЕЦИЯ</span><b>NEOFORGE</b><i></i><span>НАПОЛНЕНИЕ</span><b>СЕРВЕР</b></div>
+      </section>
+
+      <div class="content-grid">
+        <section class="panel connection-panel">
+          <div class="section-heading">
+            <div class="section-icon">I</div>
+            <div><h2>Адрес кухни</h2><p>Куда подадут порцию</p></div>
+            <span class="panel-index">01</span>
+          </div>
+          <label class="field-label" for="host">АДРЕС РЕСТОРАНА · ЗАКРЕПЛЁН</label>
+          <div class="server-inputs">
+            <input id="host" type="text" value="144.31.4.154" readonly aria-readonly="true" title="Адрес сервера закреплён">
+            <span class="input-divider"></span>
+            <label class="port-label" for="port">СТОЛ</label>
+            <input id="port" class="port-input" type="number" value="25566" readonly aria-readonly="true" title="Порт сервера закреплён">
+          </div>
+          <div class="hint"><span class="hint-dot"></span> WWDIS · адрес кухни закреплён: 144.31.4.154:25566</div>
+        </section>
+
+        <section class="panel account-panel">
+          <div class="section-heading">
+            <div class="section-icon">II</div>
+            <div><h2>Кто ест</h2><p>Локальная тарелка без рецепта входа</p></div>
+            <span class="panel-index">02</span>
+          </div>
+          <label class="field-label" for="account">ВЫБРАННЫЙ ЕДОК</label>
+          <div class="account-row">
+            <select id="account" aria-label="Имя едока">
+              <option value="">Добавь имя в список едоков</option>
+            </select>
+            <button id="remove-account" class="icon-button remove-button" type="button" aria-label="Убрать выбранного едока" title="Убрать едока">×</button>
+          </div>
+          <div class="local-create">
+            <input id="nickname" type="text" placeholder="Имя за столом, например Raven" maxlength="16" autocomplete="off">
+            <button id="create-local" class="local-button" type="button">ДОБАВИТЬ</button>
+          </div>
+          <div class="hint secure-hint"><span class="hint-dot"></span> Латиница, цифры и _ · 3–16 букв в имени</div>
+          <button id="add-account" class="microsoft-button" type="button">＋ Заказать тарелку через Microsoft</button>
+        </section>
+
+        <section class="panel settings-panel">
+          <div class="section-heading">
+            <div class="section-icon">III</div>
+            <div><h2>Приправы</h2><p>Налей нужное количество бульона</p></div>
+            <span class="panel-index">03</span>
+          </div>
+          <div class="settings-fields">
+            <div class="version-card">
+              <span class="field-label">ЗАКРЕПЛЁННЫЙ РЕЦЕПТ</span>
+              <strong>Minecraft 1.21.1</strong>
+              <span class="version-subtitle">NeoForge 21.1.266</span>
+            </div>
+            <div class="setting-control memory-control">
+              <label class="field-label" for="memory">ГРОМКОСТЬ КАСТРЮЛИ</label>
+              <div class="memory-input">
+                <input id="memory" type="number" min="2" max="32" value="4">
+                <span>ГБ</span>
+              </div>
+            </div>
+          </div>
+          <div class="hint"><span class="hint-dot"></span> Оставь Windows хотя бы 1 ГБ на подливку</div>
+        </section>
+
+        <section class="launch-area">
+          <div class="launch-meta">
+            <span>ГОТОВНОСТЬ МИСКИ</span>
+            <strong>ПОДАТЬ СРАЗУ ГОРЯЧЕЙ</strong>
+          </div>
+          <button id="launch" class="launch-button" type="button">
+            <span class="play-icon">✦</span><span>ПРЫГНУТЬ В СУП</span><span class="button-arrow">↗</span>
+          </button>
+          <div class="status-row"><span id="status-dot" class="status-dot"></span><span id="status">Тарелка ждёт своего едока</span></div>
+          <div id="progress-row" class="progress-row" hidden>
+            <div id="progress-track" class="progress-track" role="progressbar" aria-label="Прогресс загрузки" aria-valuemin="0" aria-valuemax="100">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <span id="progress-value" class="progress-value">…</span>
+          </div>
+        </section>
+      </div>
+
+      <footer><span>WWDIS</span><span>ВСЕ ИНГРЕДИЕНТЫ ДОБАВЛЕНЫ ПО ВКУСУ</span><span>1.21.1 · NEOFORGE</span></footer>
+    </main>
+    <script src="renderer.js"></script>
+  </body>
+</html>
